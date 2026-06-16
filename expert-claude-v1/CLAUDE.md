@@ -62,3 +62,5 @@ To be updated.
 <skills>
 To be updated.
 </skills>
+
+Always respond in langauge written in @language.md unless requested otherwise.
