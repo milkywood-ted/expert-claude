@@ -1,27 +1,75 @@
-Use git trailers to preserve decision context in every commit message.
-Format: conventional commit subject line, optional body, then structured trailers.
+# Git Commit Guidelines
 
-Trailers (include when applicable — skip for trivial commits like typos or formatting):
-- `Constraint:` active constraint that shaped this decision
-- `Rejected:` alternative considered | reason for rejection
-- `Directive:` warning or instruction for future modifiers of this code
-- `Confidence:` high | medium | low
-- `Scope-risk:` narrow | moderate | broad
-- `Not-tested:` edge case or scenario not covered by tests
+## Commit Timing
+* Create a commit whenever a feature, bug fix, or refactoring task is completed.
+* Commit only after the relevant tests have passed.
+* If unrelated changes arise during development, separate them into different commits.
+
+## Commit Scope
+* Each commit should have a single purpose (Single Responsibility).
+* Changes across multiple files may be grouped into one commit if they serve the same objective.
+* The following cases must be split into separate commits:
+
+  * Feature addition and bug fix in the same change set
+  * Functional modification and refactoring in the same change set
+  * Dependency updates and feature implementation in the same change set
+
+## Commit Context
+### Commit Message Format
+```
+<type>: <subject>
+
+[optional body]
+
+[optional trailer]
+
+```
+### Available types:
+
+  * `feat`: new feature
+  * `fix`: bug fix
+  * `refactor`: code changes without functional changes
+  * `docs`: documentation updates
+  * `chore`: build or configuration changes
+  * `test`: test additions or modifications
+
+* The subject must be written in English and start with an imperative verb (e.g., add, fix, update, remove, refactor).
+ - Examples:
+   `feat: add user authentication`
+   `fix: resolve null pointer in parser`
+
+### Using trailers
+When a commit contains significant technical decisions, capture the
+relevant rationale using Git trailers.
+
+Trailers are particularly valuable when documenting:
+- architecture and design decisions
+- non-obvious implementation choices
+- evaluated trade-offs
+- workarounds and known constraints
+- bug fixes that may require future review
+
+Trailers may be omitted for low-impact changes, including:
+- typo corrections
+- formatting adjustments
+- routine documentation updates
+
+Supported trailers:
+- Constraint: Technical, business, or architectural limitations that influenced the implementation
+- Rejected: Alternative approaches evaluated and the reasons they were not adopted
+- Directive: Important guidance, warnings, assumptions, or future considerations for subsequent modifications
 
 Example:
 ```
-fix(auth): prevent silent session drops during long-running ops
+fix: avoid NULL deref on early probe failure
 
-Auth service returns inconsistent status codes on token expiry,
-so the interceptor catches all 4xx and triggers inline refresh.
-
-Constraint: Auth service does not support token introspection
-Constraint: Must not add latency to non-expired-token paths
-Rejected: Extend token TTL to 24h | security policy violation
-Rejected: Background refresh on timer | race condition with concurrent requests
-Confidence: high
-Scope-risk: narrow
-Directive: Error handling is intentionally broad (all 4xx) — do not narrow without verifying upstream behavior
-Not-tested: Auth service cold-start latency >500ms
+Constraint: Hardware may not populate IRQ line during cold boot
+Rejected: Returning -ENODEV directly — masks legitimate errors
+Directive: Do not remove the null check; required for platform X
 ```
+
+## Pre-Commit Checklist
+
+* Review changes using `git diff` before committing.
+* Ensure no unnecessary debug code or temporary comments are included.
+* Verify that unrelated files are not accidentally staged.
