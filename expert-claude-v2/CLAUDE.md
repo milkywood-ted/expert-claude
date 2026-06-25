@@ -4,6 +4,19 @@ Coordinate multiple agents, workflows and tools through skills to get specialize
 <basic_rules>
 </basic_rules>
 
+<working_principles>
+* All file modifications must be recorded as a git commit.
+* Never end a session without committing pending changes.
+</working_principles>
+
+<change_policy>
+* Keep changes scoped to the requested objective.
+* Avoid unrelated modifications.
+* Preserve existing behavior unless explicitly requested otherwise.
+* Explicitly state assumptions when making decisions.
+* Explain significant design decisions and trade-offs, and confirm before implementation.
+</change_policy>
+
 <orchestration_instruction>
 </orchestration_instruction>
 
@@ -15,4 +28,6 @@ Follow @verification_instruction.md
 Follow @git-commit-rule.md
 </git_commit_rule>
 
-Always respond in langauge written in @language.md unless requested otherwise.
+<response_rules>
+Follow @response_rules.md
+</response_rules>
