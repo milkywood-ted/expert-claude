@@ -1,0 +1,2 @@
+- All responses, explanations, and comments: Korean
+- Variable names, function names, class names: English (coding convention)
