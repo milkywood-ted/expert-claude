@@ -1,2 +1,2 @@
-- All responses, explanations, and comments: Korean
+- All responses, explanations, and comments: @language.md
 - Variable names, function names, class names: English (coding convention)

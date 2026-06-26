@@ -1,8 +1,6 @@
-<working_principles>
-* All file modifications must be recorded as a git commit.
-* Never end a session without committing pending changes.
-</working_principles>
-
+<primary>
+* User instructions override all rules.
+</primary>
 <change_policy>
 * Keep changes scoped to the requested objective.
 * Avoid unrelated modifications.
