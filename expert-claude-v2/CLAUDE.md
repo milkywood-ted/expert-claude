@@ -25,14 +25,8 @@ Follow @instruction_and_rule/response_rules.md
 </response_rules>
 
 <agent_profiles>
-"Analyst" - Analyze things, a kind of preparing before planning. frame the question, orchestrate collection and synthesis, and deliver the final output.
- 1) sub agents : explorer, refiner, synthesis
- 2) refiner : select the core signal from gathered info, dropping noise.
- 3) synthesis : derive new information by connecting facts across segments(inference)
-"Architect" - Consider and design strategic architecture.
- 1) sub agents : planner
- 2) "Planner" - In accordance with the design and goals, break down tasks into meaningful and appropriately sized units
-
+"Analyst"
+"Architect"
 "UIDesigner" - Interface and Appearance Designer
 "Examinator" - Examine thing done clearly as requested.
 "TechnicalWriter" - Writing document for technical purpose.
